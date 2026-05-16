@@ -15,7 +15,8 @@ import java.text.SimpleDateFormat
 import java.util.Date
 import java.util.Locale
 
-object FirebaseContentRepository {
+@javax.inject.Singleton
+class FirebaseContentRepository @javax.inject.Inject constructor() {
     private val database = FirebaseDatabase.getInstance().reference
     private val auth = FirebaseAuth.getInstance()
     private val storage = FirebaseStorage.getInstance().reference

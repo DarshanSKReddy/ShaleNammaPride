@@ -56,13 +56,13 @@ import com.example.shale_nammapride.model.FacilityItem
 import com.example.shale_nammapride.model.StudentStar
 
 @Composable
-fun DailyMealScreen(currentLanguage: String, onBackPressed: () -> Unit = {}) {
+fun DailyMealScreen(viewModel: MainViewModel, currentLanguage: String, onBackPressed: () -> Unit = {}) {
     val scrollState = rememberScrollState()
     var meals by remember { mutableStateOf(emptyList<DailyMeal>()) }
     var errorMessage by remember { mutableStateOf<String?>(null) }
 
     LaunchedEffect(Unit) {
-        FirebaseContentRepository.listenToDailyMeals(
+        viewModel.repository.listenToDailyMeals(
             onMealsChanged = {
                 meals = it
                 errorMessage = null
@@ -303,12 +303,12 @@ private fun PreviousMealsRow(currentLanguage: String, previousMeals: List<DailyM
 }
 
 @Composable
-fun FacilityScreen(currentLanguage: String, onBackPressed: () -> Unit = {}) {
+fun FacilityScreen(viewModel: MainViewModel, currentLanguage: String, onBackPressed: () -> Unit = {}) {
     val scrollState = rememberScrollState()
     var facilities by remember { mutableStateOf(emptyList<FacilityItem>()) }
 
     LaunchedEffect(Unit) {
-        FirebaseContentRepository.listenToFacilities(
+        viewModel.repository.listenToFacilities(
             onItemsChanged = { facilities = it },
             onError = { facilities = emptyList() }
         )
@@ -403,11 +403,11 @@ fun FacilityScreen(currentLanguage: String, onBackPressed: () -> Unit = {}) {
 }
 
 @Composable
-fun StarsScreen(currentLanguage: String, onBackPressed: () -> Unit = {}) {
+fun StarsScreen(viewModel: MainViewModel, currentLanguage: String, onBackPressed: () -> Unit = {}) {
     var studentStars by remember { mutableStateOf(emptyList<StudentStar>()) }
 
     LaunchedEffect(Unit) {
-        FirebaseContentRepository.listenToStudentStars(
+        viewModel.repository.listenToStudentStars(
             onItemsChanged = { studentStars = it },
             onError = { studentStars = emptyList() }
         )
@@ -512,7 +512,7 @@ fun StarsScreen(currentLanguage: String, onBackPressed: () -> Unit = {}) {
 }
 
 @Composable
-fun FeedbackScreen(currentLanguage: String, onBackPressed: () -> Unit = {}) {
+fun FeedbackScreen(viewModel: MainViewModel, currentLanguage: String, onBackPressed: () -> Unit = {}) {
     var feedbackText by rememberSaveable { mutableStateOf("") }
     var anonymousMode by rememberSaveable { mutableStateOf(false) }
     var statusMessage by rememberSaveable { mutableStateOf<String?>(null) }
@@ -581,7 +581,7 @@ fun FeedbackScreen(currentLanguage: String, onBackPressed: () -> Unit = {}) {
                 onClick = {
                     sending = true
                     statusMessage = null
-                    FirebaseContentRepository.submitFeedback(
+                    viewModel.submitFeedback(
                         message = feedbackText.trim(),
                         anonymousMode = anonymousMode
                     ) { success, message ->

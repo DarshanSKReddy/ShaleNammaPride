@@ -1,6 +1,7 @@
 package com.example.shale_nammapride.view
 
 import android.net.Uri
+import com.example.shale_nammapride.view.MainViewModel
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.ColumnScope
@@ -52,7 +53,9 @@ import com.example.shale_nammapride.data.FirebaseContentRepository
 import com.google.firebase.auth.FirebaseAuth
 
 @Composable
-fun AdminUploadScreen(onBackPressed: () -> Unit = {}) {
+fun AdminUploadScreen(
+    viewModel: MainViewModel,
+onBackPressed: () -> Unit = {}) {
     var selectedTab by rememberSaveable { mutableStateOf(0) }
     val scrollState = rememberScrollState()
 
@@ -200,7 +203,7 @@ private fun MealUploadForm() {
                     statusMessage = null
                     val finalMenuKn = resolveKannadaText(menuEn, menuKn)
                     val finalizeSave: (String) -> Unit = { finalImageUrl ->
-                        FirebaseContentRepository.saveDailyMeal(
+                        viewModel.repository.saveDailyMeal(
                             imageUrl = finalImageUrl,
                             menuEnglish = menuEn.trim(),
                             menuKannada = finalMenuKn,
@@ -220,7 +223,7 @@ private fun MealUploadForm() {
                     if (trimmedImageUrl.isNotBlank()) {
                         finalizeSave(trimmedImageUrl)
                     } else if (pickedImageUri != null) {
-                        FirebaseContentRepository.uploadImageToStorage(
+                        viewModel.repository.uploadImageToStorage(
                             imageUri = pickedImageUri!!,
                             folderName = "daily_meals"
                         ) { uploadSuccess, result ->
@@ -327,7 +330,7 @@ private fun FacilityUploadForm() {
                     statusMessage = null
                     val finalTitleKn = resolveKannadaText(titleEn, titleKn)
                     val finalizeSave: (String) -> Unit = { finalImageUrl ->
-                        FirebaseContentRepository.saveFacility(
+                        viewModel.repository.saveFacility(
                             titleEnglish = titleEn.trim(),
                             titleKannada = finalTitleKn,
                             imageUrl = finalImageUrl,
@@ -348,7 +351,7 @@ private fun FacilityUploadForm() {
                     if (trimmedImageUrl.isNotBlank()) {
                         finalizeSave(trimmedImageUrl)
                     } else if (pickedImageUri != null) {
-                        FirebaseContentRepository.uploadImageToStorage(
+                        viewModel.repository.uploadImageToStorage(
                             imageUri = pickedImageUri!!,
                             folderName = "facilities"
                         ) { uploadSuccess, result ->
@@ -464,7 +467,7 @@ private fun StudentStarUploadForm() {
                     statusMessage = null
                     val finalAchievementKn = resolveKannadaText(achievementEn, achievementKn)
                     val finalizeSave: (String) -> Unit = { finalImageUrl ->
-                        FirebaseContentRepository.saveStudentStar(
+                        viewModel.repository.saveStudentStar(
                             name = name.trim(),
                             achievementEnglish = achievementEn.trim(),
                             achievementKannada = finalAchievementKn,
@@ -487,7 +490,7 @@ private fun StudentStarUploadForm() {
                     if (trimmedImageUrl.isNotBlank()) {
                         finalizeSave(trimmedImageUrl)
                     } else if (pickedImageUri != null) {
-                        FirebaseContentRepository.uploadImageToStorage(
+                        viewModel.repository.uploadImageToStorage(
                             imageUri = pickedImageUri!!,
                             folderName = "student_stars"
                         ) { uploadSuccess, result ->

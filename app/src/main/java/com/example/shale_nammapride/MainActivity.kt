@@ -5,6 +5,8 @@ import android.os.LocaleList
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.appcompat.app.AppCompatDelegate
+import androidx.hilt.navigation.compose.hiltViewModel
+import com.example.shale_nammapride.view.MainViewModel
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Email
@@ -13,6 +15,8 @@ import androidx.compose.material.icons.filled.Place
 import androidx.compose.material.icons.filled.Star
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
+import androidx.hilt.navigation.compose.hiltViewModel
+import com.example.shale_nammapride.view.MainViewModel
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalConfiguration
@@ -28,6 +32,9 @@ import com.example.shale_nammapride.view.*
 import com.google.firebase.auth.FirebaseAuth
 import java.util.Locale
 
+import dagger.hilt.android.AndroidEntryPoint
+
+@AndroidEntryPoint
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -38,7 +45,7 @@ class MainActivity : ComponentActivity() {
 }
 
 @Composable
-private fun AppRoot() {
+private fun AppRoot(viewModel: MainViewModel = hiltViewModel()) {
     val auth = remember { FirebaseAuth.getInstance() }
     var showSplash by remember { mutableStateOf(true) }
     var isLoggedIn by remember { mutableStateOf(auth.currentUser != null) }
@@ -57,7 +64,8 @@ private fun AppRoot() {
     }
 
     if (isLoggedIn) {
-        AppNavigationWithHome(
+        AppNavigationWithHome(viewModel = viewModel, 
+            viewModel = viewModel,
             currentLanguage = currentLanguage,
             onLanguageToggle = onLanguageToggle,
             onLogout = {
@@ -73,7 +81,10 @@ private fun AppRoot() {
 }
 
 @Composable
-fun AppNavigationWithHome(
+fun AppNavigationWithHome(viewModel = viewModel, viewModel: MainViewModel, 
+            viewModel = viewModel,
+    viewModel: MainViewModel,
+
     currentLanguage: String,
     onLanguageToggle: () -> Unit,
     onLogout: () -> Unit
@@ -174,11 +185,11 @@ fun AppNavigationWithHome(
                     onLogout = onLogout
                 )
             }
-            composable("admin") { AdminUploadScreen(onBackPressed = { navController.popBackStack() }) }
-            composable("meal") { DailyMealScreen(currentLanguage = currentLanguage, onBackPressed = { navController.popBackStack() }) }
-            composable("facility") { FacilityScreen(currentLanguage = currentLanguage, onBackPressed = { navController.popBackStack() }) }
-            composable("stars") { StarsScreen(currentLanguage = currentLanguage, onBackPressed = { navController.popBackStack() }) }
-            composable("feedback") { FeedbackScreen(currentLanguage = currentLanguage, onBackPressed = { navController.popBackStack() }) }
+            composable("admin") { AdminUploadScreen(viewModel = viewModel, viewModel = viewModel, onBackPressed = { navController.popBackStack() }) }
+            composable("dailymealscreen") { DailyMealScreen(viewModel = viewModel, viewModel = viewModel, viewModel = viewModel, currentLanguage = currentLanguage, onBackPressed = { navController.popBackStack() }) }
+            composable("facilityscreen") { FacilityScreen(viewModel = viewModel, viewModel = viewModel, viewModel = viewModel, currentLanguage = currentLanguage, onBackPressed = { navController.popBackStack() }) }
+            composable("starsscreen") { StarsScreen(viewModel = viewModel, viewModel = viewModel, viewModel = viewModel, currentLanguage = currentLanguage, onBackPressed = { navController.popBackStack() }) }
+            composable("feedbackscreen") { FeedbackScreen(viewModel = viewModel, viewModel = viewModel, viewModel = viewModel, currentLanguage = currentLanguage, onBackPressed = { navController.popBackStack() }) }
         }
     }
 }

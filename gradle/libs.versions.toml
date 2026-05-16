@@ -12,6 +12,12 @@ googleGmsGoogleServices = "4.4.4"
 firebaseDatabase = "22.0.1"
 retrofit = "2.11.0"
 gson = "2.11.0"
+hilt = "2.51.1"
+ksp = "2.0.21-1.0.27"
+mockk = "1.13.10"
+coroutines-test = "1.7.3"
+hilt-navigation-compose = "1.2.0"
+
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -39,3 +45,34 @@ kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 kotlin-compose = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
 google-gms-google-services = { id = "com.google.gms.google-services", version.ref = "googleGmsGoogleServices" }
 
+[libraries.hilt]
+module = "com.google.dagger:hilt-android"
+version.ref = "hilt"
+
+[libraries.hilt-compiler]
+module = "com.google.dagger:hilt-compiler"
+version.ref = "hilt"
+
+[libraries.hilt-navigation-compose]
+module = "androidx.hilt:hilt-navigation-compose"
+version.ref = "hilt-navigation-compose"
+
+[libraries.mockk]
+module = "io.mockk:mockk"
+version.ref = "mockk"
+
+[libraries.mockk-android]
+module = "io.mockk:mockk-android"
+version.ref = "mockk"
+
+[libraries.coroutines-test]
+module = "org.jetbrains.kotlinx:kotlinx-coroutines-test"
+version.ref = "coroutines-test"
+
+[plugins.hilt]
+id = "com.google.dagger.hilt.android"
+version.ref = "hilt"
+
+[plugins.ksp]
+id = "com.google.devtools.ksp"
+version.ref = "ksp"
