@@ -17,10 +17,11 @@ class MainViewModel @Inject constructor(
     private val _statusMessage = MutableStateFlow<String?>(null)
     val statusMessage: StateFlow<String?> = _statusMessage
 
-    fun submitFeedback(message: String, anonymous: Boolean) {
+    fun submitFeedback(message: String, anonymous: Boolean, onComplete: (Boolean, String) -> Unit = {_,_->}) {
         viewModelScope.launch {
             repository.submitFeedback(message, anonymous) { success, resultMsg ->
                 _statusMessage.value = if (success) "Success: $resultMsg" else "Error: $resultMsg"
+                onComplete(success, resultMsg)
             }
         }
     }

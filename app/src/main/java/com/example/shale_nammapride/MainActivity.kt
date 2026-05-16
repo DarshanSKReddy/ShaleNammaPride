@@ -15,8 +15,6 @@ import androidx.compose.material.icons.filled.Place
 import androidx.compose.material.icons.filled.Star
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
-import androidx.hilt.navigation.compose.hiltViewModel
-import com.example.shale_nammapride.view.MainViewModel
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalConfiguration
@@ -64,8 +62,7 @@ private fun AppRoot(viewModel: MainViewModel = hiltViewModel()) {
     }
 
     if (isLoggedIn) {
-        AppNavigationWithHome(viewModel = viewModel, 
-            viewModel = viewModel,
+        AppNavigationWithHome(viewModel = viewModel,
             currentLanguage = currentLanguage,
             onLanguageToggle = onLanguageToggle,
             onLogout = {
@@ -81,8 +78,7 @@ private fun AppRoot(viewModel: MainViewModel = hiltViewModel()) {
 }
 
 @Composable
-fun AppNavigationWithHome(viewModel = viewModel, viewModel: MainViewModel, 
-            viewModel = viewModel,
+fun AppNavigationWithHome(
     viewModel: MainViewModel,
 
     currentLanguage: String,
@@ -185,11 +181,11 @@ fun AppNavigationWithHome(viewModel = viewModel, viewModel: MainViewModel,
                     onLogout = onLogout
                 )
             }
-            composable("admin") { AdminUploadScreen(viewModel = viewModel, viewModel = viewModel, onBackPressed = { navController.popBackStack() }) }
-            composable("dailymealscreen") { DailyMealScreen(viewModel = viewModel, viewModel = viewModel, viewModel = viewModel, currentLanguage = currentLanguage, onBackPressed = { navController.popBackStack() }) }
-            composable("facilityscreen") { FacilityScreen(viewModel = viewModel, viewModel = viewModel, viewModel = viewModel, currentLanguage = currentLanguage, onBackPressed = { navController.popBackStack() }) }
-            composable("starsscreen") { StarsScreen(viewModel = viewModel, viewModel = viewModel, viewModel = viewModel, currentLanguage = currentLanguage, onBackPressed = { navController.popBackStack() }) }
-            composable("feedbackscreen") { FeedbackScreen(viewModel = viewModel, viewModel = viewModel, viewModel = viewModel, currentLanguage = currentLanguage, onBackPressed = { navController.popBackStack() }) }
+            composable("admin") { AdminUploadScreen(viewModel = viewModel, onBackPressed = { navController.popBackStack() }) }
+            composable("meal") { DailyMealScreen(viewModel = viewModel, currentLanguage = currentLanguage, onBackPressed = { navController.popBackStack() }) }
+            composable("facility") { FacilityScreen(viewModel = viewModel, currentLanguage = currentLanguage, onBackPressed = { navController.popBackStack() }) }
+            composable("stars") { StarsScreen(viewModel = viewModel, currentLanguage = currentLanguage, onBackPressed = { navController.popBackStack() }) }
+            composable("feedback") { FeedbackScreen(viewModel = viewModel, currentLanguage = currentLanguage, onBackPressed = { navController.popBackStack() }) }
         }
     }
 }

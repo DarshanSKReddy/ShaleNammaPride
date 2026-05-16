@@ -583,7 +583,7 @@ fun FeedbackScreen(viewModel: MainViewModel, currentLanguage: String, onBackPres
                     statusMessage = null
                     viewModel.submitFeedback(
                         message = feedbackText.trim(),
-                        anonymousMode = anonymousMode
+                        anonymous = anonymousMode
                     ) { success, message ->
                         sending = false
                         statusMessage = message

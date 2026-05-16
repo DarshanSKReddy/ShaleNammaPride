@@ -127,16 +127,16 @@ onBackPressed: () -> Unit = {}) {
             Spacer(modifier = Modifier.height(10.dp))
 
             when (selectedTab) {
-                0 -> MealUploadForm()
-                1 -> FacilityUploadForm()
-                2 -> StudentStarUploadForm()
+                0 -> MealUploadForm(viewModel = viewModel)
+                1 -> FacilityUploadForm(viewModel = viewModel)
+                2 -> StudentStarUploadForm(viewModel = viewModel)
             }
         }
     }
 }
 
 @Composable
-private fun MealUploadForm() {
+private fun MealUploadForm(viewModel: MainViewModel) {
     var imageUrl by rememberSaveable { mutableStateOf("") }
     var pickedImageUri by remember { mutableStateOf<Uri?>(null) }
     var menuEn by rememberSaveable { mutableStateOf("") }
@@ -256,7 +256,7 @@ private fun MealUploadForm() {
 }
 
 @Composable
-private fun FacilityUploadForm() {
+private fun FacilityUploadForm(viewModel: MainViewModel) {
     var imageUrl by rememberSaveable { mutableStateOf("") }
     var pickedImageUri by remember { mutableStateOf<Uri?>(null) }
     var titleEn by rememberSaveable { mutableStateOf("") }
@@ -384,7 +384,7 @@ private fun FacilityUploadForm() {
 }
 
 @Composable
-private fun StudentStarUploadForm() {
+private fun StudentStarUploadForm(viewModel: MainViewModel) {
     var imageUrl by rememberSaveable { mutableStateOf("") }
     var pickedImageUri by remember { mutableStateOf<Uri?>(null) }
     var name by rememberSaveable { mutableStateOf("") }
