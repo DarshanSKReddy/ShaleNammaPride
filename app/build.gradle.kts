@@ -1,3 +1,14 @@
+
+import java.util.Properties
+
+// Load local.properties
+val localProperties = Properties()
+val localPropertiesFile = rootProject.file("local.properties")
+if (localPropertiesFile.exists()) {
+    localProperties.load(localPropertiesFile.inputStream())
+}
+val geminiApiKey = localProperties.getProperty("GEMINI_API_KEY") ?: ""
+
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
@@ -18,7 +29,7 @@ android {
         versionCode = 1
         versionName = "1.0"
 
-        buildConfigField("String", "GEMINI_API_KEY", "\"AIzaSyCTcTsjkbZSlMlHwNCpRvF5nbeE1jSOgCg\"")
+        buildConfigField("String", "GEMINI_API_KEY", "\"$geminiApiKey\"")
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
