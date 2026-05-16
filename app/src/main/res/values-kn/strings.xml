@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">ಶಾಲೆ-ನಮ್ಮ ಪ್ರೈಡ್</string>
+    
+    <!-- Home Screen -->
+    <string name="home_title">ಶಾಲೆ-ನಮ್ಮ ಪ್ರೈಡ್</string>
+    <string name="home_subtitle">ನಮ್ಮ ಶಾಲೆ, ನಮ್ಮ ಗರ್ವ</string>
+    <string name="welcome_message">ಸ್ವಾಗತ!</string>
+    <string name="welcome_description">ಒಟ್ಟಾಗಿ, ಒಂದು ಉತ್ತಮ ಭವಿಷ್ಯತ್ ತರೋಲಿ ನಿರ್ಮಾಣ ಮಾಡೋಣ</string>
+    <string name="quick_access">ತ್ವರಿತ ಪ್ರವೇಶ</string>
+    <string name="daily_meal_short">ಮೆನು ಮತ್ತು ಊಟದ ಫೋಟೋ</string>
+    <string name="facilities_short">ಶಾಲೆಯ ಸ್ಥಳಗಳ ಗ್ಯಾಲರಿ</string>
+    <string name="student_stars_short">ವಿದ್ಯಾರ್ಥಿ ಸಾಧನೆಗಳನ್ನು ಆಚರಿಸಿ</string>
+    <string name="feedback_short">ಸಲಹೆ ಹಂಚಿಕೊಳ್ಳಿ</string>
+    
+    <!-- Daily Meal -->
+    <string name="daily_meal">ದಿನಸಿ ಊಟ</string>
+    <string name="daily_meal_desc">ಇಂದಿನ ಮೆನು ಮತ್ತು ಊಟ ನವೀಕರಣ ನೋಡಿ</string>
+    <string name="todays_meal">ಇಂದಿನ ಊಟ</string>
+    <string name="mid_day_meal">ಮಧ್ಯಾಹ್ನ ಊಟ ನವೀಕರಣ</string>
+    <string name="updated_for_today">ಇಂದಿಗೆ ನವೀಕೃತಗೊಂಡಿದೆ</string>
+    <string name="todays_menu">ಇಂದಿನ ಮೆನು</string>
+    <string name="nutrition_info">ಪೌಷ್ಟಿಕ ಮಾಹಿತಿ</string>
+    <string name="healthy_meal">ಮಾನಸಿಕ ಶರೀರ ಮತ್ತು ಪ್ರಕಾಶಮಾನ ಭವಿಷ್ಯತ್ಕ್ಕೆ ಆರೋಗ್ಯಕರ ಊಟ!</string>
+    <string name="note">ಟಿಪ್ಪಣಿ</string>
+    <string name="one_meal_update">ಪ್ರತಿದಿನ ಕೇವಲ ಒಂದು ಊಟ ನವೀಕರಣವನ್ನು ಅನುಮತಿಸಲಾಗುತ್ತದೆ.</string>
+    <string name="previous_meals">ಹಿಂದಿನ ಊಟ</string>
+    
+    <!-- Facilities -->
+    <string name="facilities">ಸೌಕರ್ಯಗಳು</string>
+    <string name="facilities_desc">ನಮ್ಮ ಶಾಲೆ ಸೌಕರ್ಯ ಮತ್ತು ಗ್ಯಾಲರಿ ಅನ್ವೇಷಿಸಿ</string>
+    <string name="smart_classroom">ಸ್ಮಾರ್ಟ್ ಕ್ಲಾಸ್ ರೂಮ್</string>
+    <string name="science_lab">ವಿಜ್ಞಾನ ಪ್ರಯೋಗಾಲಯ</string>
+    <string name="library">ಗ್ರಂಥಾಲಯ</string>
+    <string name="toilets">ಶೌಚಾಲಯ</string>
+    
+    <!-- Student Stars -->
+    <string name="student_stars">ವಿದ್ಯಾರ್ಥಿ ನಕ್ಷತ್ರಗಳು</string>
+    <string name="student_stars_desc">ಸಾಧನೆ ಮತ್ತು ವಿಜೇತೆಯವರನ್ನು ಆದರಿಸಿ</string>
+    <string name="star_of_week">ವಾರದ ನಕ್ಷತ್ರ</string>
+    <string name="achievement">ಸಾಧನೆ</string>
+    
+    <!-- Feedback -->
+    <string name="feedback">ಮಾಹಿತಿ ಸಂಗ್ರಹ</string>
+    <string name="feedback_desc">ನಿಮ್ಮ ಸಲಹೆ ಮತ್ತು ವಿಚಾರಗಳನ್ನು ಹಂಚಿಕೊಳ್ಳಿ</string>
+    <string name="anonymous_feedback">ಅನಾಮಧೇಯ ಮಾಹಿತಿ ಸಂಗ್ರಹ</string>
+    <string name="anonymous_mode">ಅನಾಮಧೇಯ ಮೋಡ್</string>
+    <string name="send_feedback">ಮಾಹಿತಿ ಸಂಗ್ರಹ ಕಳುಹಿಸಿ</string>
+
+    <!-- Auth -->
+    <string name="login">ಲಾಗಿನ್</string>
+    <string name="sign_up">ಸೈನ್ ಅಪ್</string>
+    <string name="logout">ಲಾಗ್ ಔಟ್</string>
+    <string name="email">ಇಮೇಲ್</string>
+    <string name="password">ಪಾಸ್ವರ್ಡ್</string>
+    <string name="admin_login">ಆಡಳಿತಗಾರ / ಪೋಷಕರ ಲಾಗಿನ್</string>
+    <string name="sign_in_to_continue">ಆ್ಯಪ್ ಬಳಸಲು ಮುಂದುವರಿಸಲು ಲಾಗಿನ್ ಮಾಡಿ</string>
+    <string name="sign_up_to_continue">ಆ್ಯಪ್ ಬಳಸಲು ಹೊಸ ಖಾತೆ ರಚಿಸಿ</string>
+    <string name="create_new_account">ಹೊಸ ಖಾತೆ ರಚಿಸಿ</string>
+    <string name="create_account">ಖಾತೆ ರಚಿಸಿ</string>
+    <string name="confirm_password">ಪಾಸ್ವರ್ಡ್ ದೃಢೀಕರಿಸಿ</string>
+    <string name="passwords_must_match">ಪಾಸ್ವರ್ಡ್‌ಗಳು ಒಂದೇ ತರ ಇರಬೇಕು</string>
+    <string name="password_min_length">ಪಾಸ್ವರ್ಡ್ ಕನಿಷ್ಠ 6 ಅಕ್ಷರಗಳಿರಬೇಕು</string>
+    <string name="already_have_account">ಈಗಾಗಲೇ ಖಾತೆ ಇದೆಯೇ? ಲಾಗಿನ್ ಮಾಡಿ</string>
+    <string name="no_account_sign_up">ಖಾತೆ ಇಲ್ಲವೇ? ಸೈನ್ ಅಪ್ ಮಾಡಿ</string>
+    <string name="or_continue_with">ಅಥವಾ ಇದರೊಂದಿಗೆ ಮುಂದುವರಿಸಿ</string>
+    <string name="admin_upload">ಆಡಳಿತ ಅಪ್‌ಲೋಡ್</string>
+    <string name="meal_tab">ಊಟ</string>
+    <string name="facility_tab">ಸೌಲಭ್ಯ</string>
+    <string name="star_tab">ವಿದ್ಯಾರ್ಥಿ ನಕ್ಷತ್ರ</string>
+    <string name="image_url">ಚಿತ್ರ URL</string>
+    <string name="menu_english">ಮೆನು (ಇಂಗ್ಲಿಷ್)</string>
+    <string name="menu_kannada">ಮೆನು (ಕನ್ನಡ)</string>
+    <string name="facility_title_english">ಸೌಲಭ್ಯ ಶೀರ್ಷಿಕೆ (ಇಂಗ್ಲಿಷ್)</string>
+    <string name="facility_title_kannada">ಸೌಲಭ್ಯ ಶೀರ್ಷಿಕೆ (ಕನ್ನಡ)</string>
+    <string name="emoji">ಇಮೋಜಿ</string>
+    <string name="student_name">ವಿದ್ಯಾರ್ಥಿ ಹೆಸರು</string>
+    <string name="achievement_english">ಸಾಧನೆ (ಇಂಗ್ಲಿಷ್)</string>
+    <string name="achievement_kannada">ಸಾಧನೆ (ಕನ್ನಡ)</string>
+    <string name="post_meal">ಊಟ ಪೋಸ್ಟ್ ಮಾಡಿ</string>
+    <string name="post_facility">ಸೌಲಭ್ಯ ಪೋಸ್ಟ್ ಮಾಡಿ</string>
+    <string name="post_star">ವಿದ್ಯಾರ್ಥಿ ನಕ್ಷತ್ರ ಪೋಸ್ಟ್ ಮಾಡಿ</string>
+    <string name="select_image">ಚಿತ್ರ ಆಯ್ಕೆಮಾಡಿ</string>
+    <string name="image_selected">ಚಿತ್ರ ಆಯ್ಕೆಗೊಂಡಿದೆ</string>
+    <string name="uploading">ಅಪ್‌ಲೋಡ್ ಆಗುತ್ತಿದೆ...</string>
+    <string name="image_or_url_hint">ಚಿತ್ರ ಆಯ್ಕೆಮಾಡಿ ಅಥವಾ URL ಅಂಟಿಸಿ.</string>
+    <string name="feedback_placeholder">ಶಾಲಾ ಸಮಿತಿಗೆ ಸಲಹೆ ಬರೆಯಿರಿ...</string>
+    <string name="upload_hint_storage">ಸಲಹೆ: ಚಿತ್ರಗಳನ್ನು Firebase Storage ಗೆ ಅಪ್‌ಲೋಡ್ ಮಾಡಿ ಮತ್ತು Download URL ಇಲ್ಲಿ ಅಂಟಿಸಿ.</string>
+    <string name="admin_panel_subtitle">ಪೋಷಕರಿಗಾಗಿ ತಕ್ಷಣದ ನವೀಕರಣಗಳನ್ನು ರಚಿಸಿ</string>
+    
+    <!-- Tagline -->
+    <string name="tagline">ಪ್ರತಿಯೊಂದು ನವೀಕರಣ ನಂಬಿಕೆ ಬಿಟ್ಟು, ಪ್ರತಿಯೊಂದು ಮಗು ಭವಿಷ್ಯತ್ತನ್ನು ನಿರ್ಮಿಸುತ್ತದೆ.</string>
+    
+    <!-- Navigation -->
+    <string name="home">ಮುಖ್ಯಪುಟ</string>
+    <string name="updates">ನವೀಕರಣ</string>
+    <string name="gallery">ಚಿತ್ರ ಸಂಗ್ರಹ</string>
+    <string name="profile">ಪ್ರೊಫೈಲ್</string>
+    
+    <!-- Language -->
+    <string name="english">EN</string>
+    <string name="kannada">KN</string>
+</resources>

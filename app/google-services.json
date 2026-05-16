@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "148838442034",
+    "project_id": "shale-namma-pride-95",
+    "storage_bucket": "shale-namma-pride-95.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:148838442034:android:9f8fc74115d149c674882b",
+        "android_client_info": {
+          "package_name": "com.example.shale_nammapride"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "148838442034-4repci25fhcomva0t4e7f4qol831i3i6.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.shale_nammapride",
+            "certificate_hash": "32f9cb815e2fb977c60181988719090be52b7e03"
+          }
+        },
+        {
+          "client_id": "148838442034-mgga4f2ovhhb9r71q7rdd1smm1tn0jds.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD72CuyOYIdQULMHsPYDAh4bcJZtg6kkCc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "148838442034-mgga4f2ovhhb9r71q7rdd1smm1tn0jds.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

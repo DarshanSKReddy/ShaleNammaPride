@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="Theme.ShaleNammaPride" parent="android:Theme.Material.Light.NoActionBar" />
+
+    <!-- Launch theme: transparent background to hide green Android splash -->
+    <style name="Theme.ShaleNammaPride.Launcher" parent="Theme.ShaleNammaPride">
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowNoDisplay">false</item>
+    </style>
+</resources>

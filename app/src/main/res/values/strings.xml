@@ -1,0 +1,102 @@
+<resources>
+    <string name="app_name">Shale-Namma Pride</string>
+    
+    <!-- Home Screen -->
+    <string name="home_title">Shale-Namma Pride</string>
+    <string name="home_subtitle">Our School, Our Pride</string>
+    <string name="welcome_message">Welcome!</string>
+    <string name="welcome_description">Together, let\'s build a better tomorrow</string>
+    <string name="quick_access">Quick Access</string>
+    <string name="daily_meal_short">Menu and meal photo</string>
+    <string name="facilities_short">Gallery of school spaces</string>
+    <string name="student_stars_short">Celebrate student wins</string>
+    <string name="feedback_short">Share a suggestion</string>
+    
+    <!-- Daily Meal -->
+    <string name="daily_meal">Daily Meal</string>
+    <string name="daily_meal_desc">See today\'s menu and meal updates</string>
+    <string name="todays_meal">Today\'s Meal</string>
+    <string name="mid_day_meal">Mid-day Meal Updates</string>
+    <string name="updated_for_today">Updated for today</string>
+    <string name="todays_menu">Today\'s Menu</string>
+    <string name="nutrition_info">Nutrition Info</string>
+    <string name="healthy_meal">Healthy meal for a strong body and bright future!</string>
+    <string name="note">Note</string>
+    <string name="one_meal_update">Only one meal update is allowed per day.</string>
+    <string name="previous_meals">Previous Meals</string>
+    
+    <!-- Facilities -->
+    <string name="facilities">Facilities</string>
+    <string name="facilities_desc">Explore our school facilities and gallery</string>
+    <string name="smart_classroom">Smart Classroom</string>
+    <string name="science_lab">Science Lab</string>
+    <string name="library">Library</string>
+    <string name="toilets">Toilets</string>
+    
+    <!-- Student Stars -->
+    <string name="student_stars">Student Stars</string>
+    <string name="student_stars_desc">Celebrate achievements and winners</string>
+    <string name="star_of_week">Star of the Week</string>
+    <string name="achievement">Achievement</string>
+    
+    <!-- Feedback -->
+    <string name="feedback">Feedback</string>
+    <string name="feedback_desc">Share your suggestions and ideas</string>
+    <string name="anonymous_feedback">Anonymous Feedback</string>
+    <string name="anonymous_mode">Anonymous Mode</string>
+    <string name="send_feedback">Send Feedback</string>
+
+    <!-- Auth -->
+    <string name="login">Login</string>
+    <string name="sign_up">Sign Up</string>
+    <string name="logout">Logout</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="admin_login">Admin / Parent Login</string>
+    <string name="sign_in_to_continue">Sign in to continue using the app</string>
+    <string name="sign_up_to_continue">Create your account to continue using the app</string>
+    <string name="create_new_account">Create New Account</string>
+    <string name="create_account">Create Account</string>
+    <string name="confirm_password">Confirm Password</string>
+    <string name="passwords_must_match">Passwords must match</string>
+    <string name="password_min_length">Password must be at least 6 characters</string>
+    <string name="already_have_account">Already have an account? Login</string>
+    <string name="no_account_sign_up">No account yet? Sign Up</string>
+    <string name="or_continue_with">or continue with</string>
+    <string name="admin_upload">Admin Upload</string>
+    <string name="meal_tab">Meal</string>
+    <string name="facility_tab">Facility</string>
+    <string name="star_tab">Student Star</string>
+    <string name="image_url">Image URL</string>
+    <string name="menu_english">Menu (English)</string>
+    <string name="menu_kannada">Menu (Kannada)</string>
+    <string name="facility_title_english">Facility Title (English)</string>
+    <string name="facility_title_kannada">Facility Title (Kannada)</string>
+    <string name="emoji">Emoji</string>
+    <string name="student_name">Student Name</string>
+    <string name="achievement_english">Achievement (English)</string>
+    <string name="achievement_kannada">Achievement (Kannada)</string>
+    <string name="post_meal">Post Meal</string>
+    <string name="post_facility">Post Facility</string>
+    <string name="post_star">Post Student Star</string>
+    <string name="select_image">Select Image</string>
+    <string name="image_selected">Image selected</string>
+    <string name="uploading">Uploading...</string>
+    <string name="image_or_url_hint">Pick an image or paste a URL.</string>
+    <string name="feedback_placeholder">Write a suggestion for the school committee...</string>
+    <string name="upload_hint_storage">Tip: Upload images to Firebase Storage and paste the download URL here.</string>
+    <string name="admin_panel_subtitle">Create updates for parents in real-time</string>
+    
+    <!-- Tagline -->
+    <string name="tagline">Every update builds trust, every child builds the future.</string>
+    
+    <!-- Navigation -->
+    <string name="home">Home</string>
+    <string name="updates">Updates</string>
+    <string name="gallery">Gallery</string>
+    <string name="profile">Profile</string>
+    
+    <!-- Language -->
+    <string name="english">ENG</string>
+    <string name="kannada">KAN</string>
+</resources>
