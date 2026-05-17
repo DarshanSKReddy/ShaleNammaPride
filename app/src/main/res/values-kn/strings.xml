@@ -68,6 +68,8 @@
     <string name="meal_tab">ಊಟ</string>
     <string name="facility_tab">ಸೌಲಭ್ಯ</string>
     <string name="star_tab">ವಿದ್ಯಾರ್ಥಿ ನಕ್ಷತ್ರ</string>
+    <string name="insights_tab">ಒಳನೋಟಗಳು</string>
+    <string name="weekly_insights">ಸಾಪ್ತಾಹಿಕ AI ಒಳನೋಟಗಳು</string>
     <string name="image_url">ಚಿತ್ರ URL</string>
     <string name="menu_english">ಮೆನು (ಇಂಗ್ಲಿಷ್)</string>
     <string name="menu_kannada">ಮೆನು (ಕನ್ನಡ)</string>
