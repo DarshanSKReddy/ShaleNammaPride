@@ -64,6 +64,11 @@ dependencies {
     implementation(libs.hilt)
     ksp(libs.hilt.compiler)
     implementation(libs.hilt.navigation.compose)
+    implementation(libs.room.runtime)
+    implementation(libs.room.ktx)
+    implementation(libs.generativeai)
+    ksp(libs.room.compiler)
+
 
     // Unit Tests
     testImplementation(libs.mockk)
@@ -71,6 +76,12 @@ dependencies {
 
     // UI Tests
     androidTestImplementation(libs.mockk.android)
+    
+    // Room
+    implementation(libs.room.runtime)
+    ksp(libs.room.compiler)
+    implementation(libs.room.ktx)
+    implementation(libs.generativeai)
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
     implementation(libs.androidx.activity.compose)

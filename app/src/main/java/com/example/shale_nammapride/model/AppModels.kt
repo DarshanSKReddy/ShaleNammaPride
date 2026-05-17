@@ -1,7 +1,12 @@
 package com.example.shale_nammapride.model
 
+import androidx.room.Entity
+import androidx.room.PrimaryKey
+
 // This represents a single Daily Meal post
+@Entity(tableName = "daily_meals")
 data class DailyMeal(
+    @PrimaryKey
     val id: String = "",
     val date: String = "",
     val imageUrl: String = "",
@@ -10,7 +15,9 @@ data class DailyMeal(
     val postedBy: String = ""
 )
 
+@Entity(tableName = "facilities")
 data class FacilityItem(
+    @PrimaryKey
     val id: String = "",
     val titleEnglish: String = "",
     val titleKannada: String = "",
@@ -19,7 +26,9 @@ data class FacilityItem(
     val order: Int = 0
 )
 
+@Entity(tableName = "student_stars")
 data class StudentStar(
+    @PrimaryKey
     val id: String = "",
     val name: String = "",
     val achievementEnglish: String = "",
@@ -30,7 +39,9 @@ data class StudentStar(
 )
 
 // This represents a piece of Feedback
+@Entity(tableName = "feedbacks")
 data class Feedback(
+    @PrimaryKey
     val id: String = "",
     val message: String = "",
     val sender: String = "Anonymous",

@@ -15,8 +15,16 @@ import java.text.SimpleDateFormat
 import java.util.Date
 import java.util.Locale
 
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
+
+
 @javax.inject.Singleton
-class FirebaseContentRepository @javax.inject.Inject constructor() {
+class FirebaseContentRepository @javax.inject.Inject constructor(
+    private val roomDao: AppRoomDao
+) {
     private val database = FirebaseDatabase.getInstance().reference
     private val auth = FirebaseAuth.getInstance()
     private val storage = FirebaseStorage.getInstance().reference
@@ -175,12 +183,17 @@ class FirebaseContentRepository @javax.inject.Inject constructor() {
         onMealsChanged: (List<DailyMeal>) -> Unit,
         onError: (String) -> Unit = {}
     ) {
+        CoroutineScope(Dispatchers.IO).launch {
+            roomDao.getMeals().collect { meals ->
+                withContext(Dispatchers.Main) { onMealsChanged(meals) }
+            }
+        }
         database.child("daily_meals")
             .orderByKey()
             .addValueEventListener(object : ValueEventListener {
                 override fun onDataChange(snapshot: DataSnapshot) {
                     val meals = snapshot.children.mapNotNull { it.getValue(DailyMeal::class.java) }
-                    onMealsChanged(meals.reversed())
+                    CoroutineScope(Dispatchers.IO).launch { roomDao.insertMeals(meals) }
                 }
 
                 override fun onCancelled(error: DatabaseError) {
@@ -193,12 +206,17 @@ class FirebaseContentRepository @javax.inject.Inject constructor() {
         onItemsChanged: (List<FacilityItem>) -> Unit,
         onError: (String) -> Unit = {}
     ) {
+        CoroutineScope(Dispatchers.IO).launch {
+            roomDao.getFacilities().collect { items ->
+                withContext(Dispatchers.Main) { onItemsChanged(items) }
+            }
+        }
         database.child("facilities")
             .orderByChild("order")
             .addValueEventListener(object : ValueEventListener {
                 override fun onDataChange(snapshot: DataSnapshot) {
                     val items = snapshot.children.mapNotNull { it.getValue(FacilityItem::class.java) }
-                    onItemsChanged(items)
+                    CoroutineScope(Dispatchers.IO).launch { roomDao.insertFacilities(items) }
                 }
 
                 override fun onCancelled(error: DatabaseError) {
@@ -211,12 +229,40 @@ class FirebaseContentRepository @javax.inject.Inject constructor() {
         onItemsChanged: (List<StudentStar>) -> Unit,
         onError: (String) -> Unit = {}
     ) {
+        CoroutineScope(Dispatchers.IO).launch {
+            roomDao.getStudentStars().collect { items ->
+                withContext(Dispatchers.Main) { onItemsChanged(items) }
+            }
+        }
         database.child("student_stars")
             .orderByChild("date")
             .addValueEventListener(object : ValueEventListener {
                 override fun onDataChange(snapshot: DataSnapshot) {
                     val items = snapshot.children.mapNotNull { it.getValue(StudentStar::class.java) }
-                    onItemsChanged(items.reversed())
+                    CoroutineScope(Dispatchers.IO).launch { roomDao.insertStudentStars(items) }
+                }
+
+                override fun onCancelled(error: DatabaseError) {
+                    onError(error.message)
+                }
+            })
+    }
+
+    fun listenToFeedback(
+        onFeedbackChanged: (List<Feedback>) -> Unit,
+        onError: (String) -> Unit = {}
+    ) {
+        CoroutineScope(Dispatchers.IO).launch {
+            roomDao.getFeedbacks().collect { items ->
+                withContext(Dispatchers.Main) { onFeedbackChanged(items) }
+            }
+        }
+        database.child("feedback")
+            .orderByChild("timestamp")
+            .addValueEventListener(object : ValueEventListener {
+                override fun onDataChange(snapshot: DataSnapshot) {
+                    val items = snapshot.children.mapNotNull { it.getValue(Feedback::class.java) }
+                    CoroutineScope(Dispatchers.IO).launch { roomDao.insertFeedbacks(items) }
                 }
 
                 override fun onCancelled(error: DatabaseError) {

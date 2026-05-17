@@ -9,6 +9,11 @@ import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
+import com.example.shale_nammapride.BuildConfig
+import com.google.ai.client.generativeai.GenerativeModel
+import com.google.ai.client.generativeai.type.content
+
+
 @HiltViewModel
 class MainViewModel @Inject constructor(
     val repository: FirebaseContentRepository
@@ -28,5 +33,39 @@ class MainViewModel @Inject constructor(
     
     fun clearStatus() {
         _statusMessage.value = null
+    }
+
+
+    private val _summaryResult = MutableStateFlow<String?>(null)
+    val summaryResult: StateFlow<String?> = _summaryResult
+
+    fun generateFeedbackSummary(recentFeedbacks: List<String>) {
+        if (recentFeedbacks.isEmpty()) {
+            _summaryResult.value = "No feedback available to summarize."
+            return
+        }
+
+        viewModelScope.launch {
+            _summaryResult.value = "Generating summary..."
+            try {
+                val apiKey = BuildConfig.GEMINI_API_KEY
+                if (apiKey.isBlank() || apiKey == "null") {
+                    _summaryResult.value = "Error: GEMINI_API_KEY is not configured."
+                    return@launch
+                }
+
+                val generativeModel = GenerativeModel(
+                    modelName = "gemini-1.5-flash",
+                    apiKey = apiKey
+                )
+
+                val prompt = "You are an AI assistant for a school management app. Here are the latest feedback messages from students and parents. Please provide a concise 'Weekly Insights Summary' highlighting the main themes, areas of praise, and concerns: \n\n" + recentFeedbacks.joinToString("\n- ")
+
+                val response = generativeModel.generateContent(prompt)
+                _summaryResult.value = response.text ?: "Error: Received empty response from AI."
+            } catch (e: Exception) {
+                _summaryResult.value = "Error: ${e.localizedMessage}"
+            }
+        }
     }
 }

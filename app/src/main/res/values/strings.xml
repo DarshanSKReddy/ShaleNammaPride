@@ -67,6 +67,8 @@
     <string name="meal_tab">Meal</string>
     <string name="facility_tab">Facility</string>
     <string name="star_tab">Student Star</string>
+    <string name="insights_tab">Insights</string>
+    <string name="weekly_insights">Weekly AI Insights</string>
     <string name="image_url">Image URL</string>
     <string name="menu_english">Menu (English)</string>
     <string name="menu_kannada">Menu (Kannada)</string>

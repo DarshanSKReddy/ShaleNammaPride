@@ -1,4 +1,5 @@
 package com.example.shale_nammapride.view
+import androidx.compose.ui.Alignment
 
 import android.net.Uri
 import com.example.shale_nammapride.view.MainViewModel
@@ -27,6 +28,13 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Tab
 import androidx.compose.material3.TabRow
+
+import androidx.compose.material3.ScrollableTabRow
+import androidx.compose.runtime.collectAsState
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
+import com.example.shale_nammapride.model.Feedback
+
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
@@ -36,7 +44,6 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
@@ -57,6 +64,13 @@ fun AdminUploadScreen(
     viewModel: MainViewModel,
 onBackPressed: () -> Unit = {}) {
     var selectedTab by rememberSaveable { mutableStateOf(0) }
+    var feedbackList by remember { mutableStateOf<List<Feedback>>(emptyList()) }
+    
+    LaunchedEffect(Unit) {
+        viewModel.repository.listenToFeedback(onFeedbackChanged = {
+            feedbackList = it
+        })
+    }
     val scrollState = rememberScrollState()
 
     Column(
@@ -92,10 +106,11 @@ onBackPressed: () -> Unit = {}) {
             }
         }
 
-        TabRow(selectedTabIndex = selectedTab) {
+        ScrollableTabRow(selectedTabIndex = selectedTab, edgePadding = 8.dp) {
             Tab(selected = selectedTab == 0, onClick = { selectedTab = 0 }, text = { Text(stringResource(id = R.string.meal_tab)) })
             Tab(selected = selectedTab == 1, onClick = { selectedTab = 1 }, text = { Text(stringResource(id = R.string.facility_tab)) })
             Tab(selected = selectedTab == 2, onClick = { selectedTab = 2 }, text = { Text(stringResource(id = R.string.star_tab)) })
+            Tab(selected = selectedTab == 3, onClick = { selectedTab = 3 }, text = { Text(stringResource(id = R.string.insights_tab)) })
         }
 
         Column(
