@@ -16,6 +16,17 @@ import androidx.compose.material.icons.filled.Star
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.runtime.saveable.rememberSaveable
+
+import androidx.compose.animation.AnimatedContentTransitionScope
+import androidx.compose.animation.core.tween
+import androidx.compose.animation.fadeIn
+import androidx.compose.animation.fadeOut
+import androidx.compose.material3.SnackbarHost
+import androidx.compose.material3.SnackbarHostState
+import androidx.compose.material3.Scaffold
+import androidx.compose.runtime.CompositionLocalProvider
+import androidx.compose.runtime.staticCompositionLocalOf
+
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.res.stringResource
@@ -42,6 +53,8 @@ class MainActivity : ComponentActivity() {
     }
 }
 
+val LocalSnackbar = staticCompositionLocalOf<SnackbarHostState> { error("No Snackbar provided") }
+
 @Composable
 private fun AppRoot(viewModel: MainViewModel = hiltViewModel()) {
     val auth = remember { FirebaseAuth.getInstance() }
@@ -49,6 +62,7 @@ private fun AppRoot(viewModel: MainViewModel = hiltViewModel()) {
     var isLoggedIn by remember { mutableStateOf(auth.currentUser != null) }
     var currentLanguage by rememberSaveable { mutableStateOf("en") }
 
+    val snackbarHostState = remember { SnackbarHostState() }
     val onLanguageToggle = {
         val newLang = if (currentLanguage == "en") "kn" else "en"
         currentLanguage = newLang
@@ -172,7 +186,15 @@ fun AppNavigationWithHome(
             }
         }
     ) { innerPadding ->
-        NavHost(navController = navController, startDestination = "home", modifier = Modifier.padding(innerPadding)) {
+        NavHost(
+            navController = navController,
+            startDestination = "home",
+            modifier = Modifier.padding(innerPadding),
+            enterTransition = { slideIntoContainer(AnimatedContentTransitionScope.SlideDirection.Left, animationSpec = tween(400)) + fadeIn(animationSpec = tween(400)) },
+            exitTransition = { slideOutOfContainer(AnimatedContentTransitionScope.SlideDirection.Left, animationSpec = tween(400)) + fadeOut(animationSpec = tween(400)) },
+            popEnterTransition = { slideIntoContainer(AnimatedContentTransitionScope.SlideDirection.Right, animationSpec = tween(400)) + fadeIn(animationSpec = tween(400)) },
+            popExitTransition = { slideOutOfContainer(AnimatedContentTransitionScope.SlideDirection.Right, animationSpec = tween(400)) + fadeOut(animationSpec = tween(400)) }
+        ) {
             composable("home") {
                 HomeScreen(
                     onNavigateTo = { route -> navigate(route) },

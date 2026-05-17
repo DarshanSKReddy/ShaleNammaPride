@@ -39,6 +39,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import com.example.shale_nammapride.LocalSnackbar
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.res.colorResource
@@ -60,6 +61,12 @@ fun DailyMealScreen(viewModel: MainViewModel, currentLanguage: String, onBackPre
     val scrollState = rememberScrollState()
     var meals by remember { mutableStateOf(emptyList<DailyMeal>()) }
     var errorMessage by remember { mutableStateOf<String?>(null) }
+    val snackbar = LocalSnackbar.current
+    LaunchedEffect(errorMessage) {
+        if (!errorMessage.isNullOrBlank()) {
+            snackbar.showSnackbar(errorMessage!!)
+        }
+    }
 
     LaunchedEffect(Unit) {
         viewModel.repository.listenToDailyMeals(
