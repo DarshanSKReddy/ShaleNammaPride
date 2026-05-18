@@ -39,6 +39,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.animation.animateContentSize
 import com.example.shale_nammapride.LocalSnackbar
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalConfiguration
@@ -138,13 +139,13 @@ private fun MealDetailCard(meal: DailyMeal?, currentLanguage: String) {
     val dateLabel = meal?.date?.ifBlank { localizedDateLabel(currentLanguage) } ?: localizedDateLabel(currentLanguage)
 
     Card(
-        modifier = Modifier.fillMaxWidth().padding(bottom = 16.dp),
+        modifier = Modifier.fillMaxWidth().animateContentSize().padding(bottom = 16.dp),
         shape = RoundedCornerShape(18.dp),
         colors = CardDefaults.cardColors(containerColor = Color.White)
     ) {
         Column(modifier = Modifier.padding(18.dp)) {
             Row(
-                modifier = Modifier.fillMaxWidth(),
+                modifier = Modifier.fillMaxWidth().animateContentSize(),
                 horizontalArrangement = Arrangement.SpaceBetween,
                 verticalAlignment = Alignment.CenterVertically
             ) {
@@ -197,7 +198,7 @@ private fun MealDetailCard(meal: DailyMeal?, currentLanguage: String) {
             }
 
             Card(
-                modifier = Modifier.fillMaxWidth().padding(top = 16.dp),
+                modifier = Modifier.fillMaxWidth().animateContentSize().padding(top = 16.dp),
                 shape = RoundedCornerShape(14.dp),
                 colors = CardDefaults.cardColors(containerColor = colorResource(id = R.color.light_gray))
             ) {
@@ -226,7 +227,7 @@ private fun MealDetailCard(meal: DailyMeal?, currentLanguage: String) {
 @Composable
 private fun NutritionCard(currentLanguage: String) {
     Card(
-        modifier = Modifier.fillMaxWidth().padding(bottom = 16.dp),
+        modifier = Modifier.fillMaxWidth().animateContentSize().padding(bottom = 16.dp),
         shape = RoundedCornerShape(18.dp),
         colors = CardDefaults.cardColors(containerColor = colorResource(id = R.color.light_blue_card))
     ) {
@@ -254,7 +255,7 @@ private fun NutritionCard(currentLanguage: String) {
 @Composable
 private fun NoteCard(currentLanguage: String) {
     Card(
-        modifier = Modifier.fillMaxWidth().padding(bottom = 16.dp),
+        modifier = Modifier.fillMaxWidth().animateContentSize().padding(bottom = 16.dp),
         shape = RoundedCornerShape(18.dp),
         colors = CardDefaults.cardColors(containerColor = colorResource(id = R.color.light_yellow_bg))
     ) {
@@ -369,13 +370,13 @@ fun FacilityScreen(viewModel: MainViewModel, currentLanguage: String, onBackPres
                 }
 
                 Card(
-                    modifier = Modifier.fillMaxWidth().padding(bottom = 12.dp),
+                    modifier = Modifier.fillMaxWidth().animateContentSize().padding(bottom = 12.dp),
                     shape = RoundedCornerShape(18.dp),
                     colors = CardDefaults.cardColors(containerColor = Color.White)
                 ) {
                     Column(modifier = Modifier.padding(14.dp)) {
                         Box(
-                            modifier = Modifier.fillMaxWidth().height(172.dp).background(colorResource(id = R.color.light_blue_card), shape = RoundedCornerShape(14.dp)),
+                            modifier = Modifier.fillMaxWidth().animateContentSize().height(172.dp).background(colorResource(id = R.color.light_blue_card), shape = RoundedCornerShape(14.dp)),
                             contentAlignment = Alignment.Center
                         ) {
                             if (item.imageUrl.isNotBlank()) {
@@ -467,12 +468,12 @@ fun StarsScreen(viewModel: MainViewModel, currentLanguage: String, onBackPressed
                 }
 
                 Card(
-                    modifier = Modifier.fillMaxWidth().padding(bottom = 12.dp),
+                    modifier = Modifier.fillMaxWidth().animateContentSize().padding(bottom = 12.dp),
                     shape = RoundedCornerShape(18.dp),
                     colors = CardDefaults.cardColors(containerColor = Color.White)
                 ) {
                     Column(
-                        modifier = Modifier.fillMaxWidth().padding(18.dp),
+                        modifier = Modifier.fillMaxWidth().animateContentSize().padding(18.dp),
                         horizontalAlignment = Alignment.CenterHorizontally
                     ) {
                         Box(
@@ -549,12 +550,12 @@ fun FeedbackScreen(viewModel: MainViewModel, currentLanguage: String, onBackPres
             Spacer(modifier = Modifier.height(12.dp))
 
             Card(
-                modifier = Modifier.fillMaxWidth().padding(bottom = 16.dp),
+                modifier = Modifier.fillMaxWidth().animateContentSize().padding(bottom = 16.dp),
                 shape = RoundedCornerShape(18.dp),
                 colors = CardDefaults.cardColors(containerColor = Color.White)
             ) {
                 Row(
-                    modifier = Modifier.fillMaxWidth().padding(18.dp),
+                    modifier = Modifier.fillMaxWidth().animateContentSize().padding(18.dp),
                     verticalAlignment = Alignment.CenterVertically,
                     horizontalArrangement = Arrangement.SpaceBetween
                 ) {
@@ -575,7 +576,7 @@ fun FeedbackScreen(viewModel: MainViewModel, currentLanguage: String, onBackPres
             TextField(
                 value = feedbackText,
                 onValueChange = { feedbackText = it },
-                modifier = Modifier.fillMaxWidth().height(170.dp).padding(bottom = 16.dp),
+                modifier = Modifier.fillMaxWidth().animateContentSize().height(170.dp).padding(bottom = 16.dp),
                 placeholder = { Text(localizedText(currentLanguage, "Write a suggestion for the school committee...", "ಶಾಲಾ ಸಮಿತಿಗೆ ಸಲಹೆ ಬರೆಯಿರಿ...")) },
                 shape = RoundedCornerShape(18.dp),
                 colors = TextFieldDefaults.colors(
@@ -600,7 +601,7 @@ fun FeedbackScreen(viewModel: MainViewModel, currentLanguage: String, onBackPres
                     }
                 },
                 enabled = !sending && feedbackText.isNotBlank(),
-                modifier = Modifier.fillMaxWidth().height(52.dp),
+                modifier = Modifier.fillMaxWidth().animateContentSize().height(52.dp),
                 colors = ButtonDefaults.buttonColors(containerColor = colorResource(id = R.color.primary_orange)),
                 shape = RoundedCornerShape(14.dp)
             ) {
@@ -638,7 +639,7 @@ private fun HeaderBar(
             .background(backgroundColor)
             .padding(horizontal = if (isCompactScreen) 10.dp else 16.dp, vertical = if (isCompactScreen) 10.dp else 16.dp)
     ) {
-        Row(modifier = Modifier.fillMaxWidth(), verticalAlignment = Alignment.CenterVertically) {
+        Row(modifier = Modifier.fillMaxWidth().animateContentSize(), verticalAlignment = Alignment.CenterVertically) {
             IconButton(onClick = onBackPressed) {
                 Icon(Icons.AutoMirrored.Filled.ArrowBack, contentDescription = "Back")
             }
