@@ -75,19 +75,21 @@ private fun AppRoot(viewModel: MainViewModel = hiltViewModel()) {
         return
     }
 
-    if (isLoggedIn) {
-        AppNavigationWithHome(viewModel = viewModel,
-            currentLanguage = currentLanguage,
-            onLanguageToggle = onLanguageToggle,
-            onLogout = {
-                auth.signOut()
-                isLoggedIn = false
-                currentLanguage = "en"
-                AppCompatDelegate.setApplicationLocales(LocaleListCompat.forLanguageTags("en"))
-            }
-        )
-    } else {
-        LoginScreen(onLoginSuccess = { isLoggedIn = true })
+    CompositionLocalProvider(LocalSnackbar provides snackbarHostState) {
+        if (isLoggedIn) {
+            AppNavigationWithHome(viewModel = viewModel,
+                currentLanguage = currentLanguage,
+                onLanguageToggle = onLanguageToggle,
+                onLogout = {
+                    auth.signOut()
+                    isLoggedIn = false
+                    currentLanguage = "en"
+                    AppCompatDelegate.setApplicationLocales(LocaleListCompat.forLanguageTags("en"))
+                }
+            )
+        } else {
+            LoginScreen(onLoginSuccess = { isLoggedIn = true })
+        }
     }
 }
 
