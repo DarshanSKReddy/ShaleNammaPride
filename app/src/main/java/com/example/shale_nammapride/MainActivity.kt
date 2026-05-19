@@ -105,8 +105,14 @@ fun AppNavigationWithHome(
     val currentRoute = navBackStackEntry?.destination?.route
 
     fun navigate(route: String) {
-        navController.navigate(route) {
-            launchSingleTop = true
+        if (currentRoute != route) {
+            navController.navigate(route) {
+                launchSingleTop = true
+                restoreState = true
+                popUpTo(navController.graph.startDestinationId) {
+                    saveState = true
+                }
+            }
         }
     }
 
@@ -203,11 +209,11 @@ fun AppNavigationWithHome(
                     onLogout = onLogout
                 )
             }
-            composable("admin") { AdminUploadScreen(viewModel = viewModel, onBackPressed = { navController.popBackStack() }) }
-            composable("meal") { DailyMealScreen(viewModel = viewModel, currentLanguage = currentLanguage, onBackPressed = { navController.popBackStack() }) }
-            composable("facility") { FacilityScreen(viewModel = viewModel, currentLanguage = currentLanguage, onBackPressed = { navController.popBackStack() }) }
-            composable("stars") { StarsScreen(viewModel = viewModel, currentLanguage = currentLanguage, onBackPressed = { navController.popBackStack() }) }
-            composable("feedback") { FeedbackScreen(viewModel = viewModel, currentLanguage = currentLanguage, onBackPressed = { navController.popBackStack() }) }
+            composable("admin") { AdminUploadScreen(viewModel = viewModel, onBackPressed = { navController.previousBackStackEntry?.let { navController.popBackStack() } }) }
+            composable("meal") { DailyMealScreen(viewModel = viewModel, currentLanguage = currentLanguage, onBackPressed = { navController.previousBackStackEntry?.let { navController.popBackStack() } }) }
+            composable("facility") { FacilityScreen(viewModel = viewModel, currentLanguage = currentLanguage, onBackPressed = { navController.previousBackStackEntry?.let { navController.popBackStack() } }) }
+            composable("stars") { StarsScreen(viewModel = viewModel, currentLanguage = currentLanguage, onBackPressed = { navController.previousBackStackEntry?.let { navController.popBackStack() } }) }
+            composable("feedback") { FeedbackScreen(viewModel = viewModel, currentLanguage = currentLanguage, onBackPressed = { navController.previousBackStackEntry?.let { navController.popBackStack() } }) }
         }
     }
 }
